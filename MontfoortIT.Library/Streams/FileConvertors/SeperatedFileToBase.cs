@@ -27,12 +27,14 @@ namespace MontfoortIT.Library.Streams.FileConvertors
             string line = "start";
             while (line!=null)
             {
-                to.WriteStartRow();
+                if (!ContinueRead)
+                    to.WriteStartRow();
 
                 line = await streamReader.ReadLineAsync();
                 ConvertLineToColumns(to, excludeChars, line);
 
-                to.WriteEndRow();
+                if(!ContinueRead)
+                    to.WriteEndRow();
             }
 
             to.WriteEndTable();
@@ -56,7 +58,8 @@ namespace MontfoortIT.Library.Streams.FileConvertors
                 char? c = line[cCount];
                 while (c.HasValue && c >= 0 && c != '\n')
                 {
-                    to.WriteStartColumn();
+                    if(!ContinueRead)
+                        to.WriteStartColumn();
 
                     StringBuilder columnBuilder = new StringBuilder();
                     //StringBuilder strBuilder = new StringBuilder();
@@ -82,7 +85,8 @@ namespace MontfoortIT.Library.Streams.FileConvertors
                     text = CleanText(text);
                     to.WriteString(text);
 
-                    to.WriteEndColumn();
+                    if(!ContinueRead)
+                        to.WriteEndColumn();
 
                     if (c == Seperator)
                         c = GetNextChar(line, ref cCount);

@@ -58,6 +58,9 @@
     <None Update="DataTest\20131017_Mid-Day_DPB.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="DataTest\MultiLineTest.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Files\04.Opgenomen-documenten.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

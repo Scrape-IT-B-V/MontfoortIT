@@ -12,7 +12,7 @@
     <RootNamespace>MontfoortIT.Library</RootNamespace>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<Company>Montfoort IT B.V.</Company>
-    <Version>8.2.4</Version>
+    <Version>8.2.7</Version>
   </PropertyGroup>
 
 

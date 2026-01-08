@@ -52,7 +52,6 @@ namespace MontfoortIT.Office.Excel.Standard.Test.Csv
 
             CommaSeperatedToXml commaSeperator = new CommaSeperatedToXml();
 
-
             // Act
 
             await commaSeperator.ConvertAsync(csvStream, new CsvToExcelWriter(application, newSheet));
@@ -61,6 +60,27 @@ namespace MontfoortIT.Office.Excel.Standard.Test.Csv
 
             // Assert
             Assert.AreEqual("110", newSheet.Cells[1, 1].Text);
+
+        }
+
+        [TestMethod]
+        public async Task ConvertMultiLineToExcelTest()
+        {
+            // Assemble
+            var csvStream = File.OpenRead(@"DataTest/MultiLineTest.csv");
+            using Application application = new Application();
+            var newSheet = application.Workbook.Sheets.Create("New sheet");
+
+            CommaSeperatedToXml commaSeperator = new CommaSeperatedToXml();
+
+            // Act
+
+            await commaSeperator.ConvertAsync(csvStream, new CsvToExcelWriter(application, newSheet));
+
+            //await newSheet.FillFromCsvAsync(csvStream, new Options());
+
+            // Assert
+            Assert.AreEqual(2, newSheet.Cells.RowCount);
 
         }
 
