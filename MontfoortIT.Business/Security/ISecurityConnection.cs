@@ -124,5 +124,11 @@ namespace MontfoortIT.Business.Security
         /// <returns>If the reset password succeeeded</returns>
         Task<bool> ResetPasswordAsync(string userName, string newPassword);
 
+
+        /// <summary>
+        /// Get the IP address of the client, this is useful for logging and security purposes. The implementation should consider the possibility of the client being behind a proxy or load balancer, and should attempt to retrieve the original client IP address from the appropriate headers (e.g., X-Forwarded-For) if necessary.
+        /// </summary>
+        /// <returns></returns>
+        string GetClientIP();
     }
 }
